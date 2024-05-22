@@ -11,5 +11,5 @@ module load 2022
 module load CUDA/11.8.0
 
 source ~/fallon/bin/activate
-python /home/tdado/pam/main_sty.py
-python /home/tdado/pam/lin_sty.py
+python /home/pam/main_sty.py
+python /home/pam/lin_sty.py

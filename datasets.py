@@ -4,8 +4,8 @@ from imports import *
 
 
 def get_god():
-    w_te = np.load("/home/tdado/god/t_te_best.npy")
-    w_tr = np.load("/home/tdado/god/t_tr_best.npy")
+    w_te = np.load("/home/god/t_te_best.npy")
+    w_tr = np.load("/home/god/t_tr_best.npy")
     rois = ["V1", "V2", "V3", "V4", "LOC", "FFA", "PPA"]
     _H = [0, 2521, 2687, 2058, 1283, 2724, 2100, 900]
     H = np.cumsum(_H)
@@ -15,7 +15,7 @@ def get_god():
     for i, roi in enumerate(rois):
         x_tr = np.zeros((1200, H[-1]))
         for i, roi in enumerate(rois):
-            _roi = np.mean(np.load(f"/home/tdado/god2/hyperaligned/{roi}_aligned.npy")[:, :1200], axis=0)
+            _roi = np.mean(np.load(f"/home/god2/hyperaligned/{roi}_aligned.npy")[:, :1200], axis=0)
             roi_mean = np.mean(_roi, axis=0)
             roi_std = np.std(_roi, axis=0, ddof=1)
             roi_std[roi_std == 0] = 1
@@ -64,7 +64,7 @@ def get_god():
     x_tr = np.zeros((1200, np.sum(_h)))
     x_pt = np.zeros((50, np.sum(_h)))
     for roi_index, roi in enumerate(rois):
-        _roi = np.load(f"/home/tdado/god2/hyperaligned/{roi}_aligned.npy")
+        _roi = np.load(f"/home/god2/hyperaligned/{roi}_aligned.npy")
         vox_range = slice(h[roi_index], h[roi_index+1])
         x_tr[:, vox_range] = _roi[:, :1200, masks[roi_index]].mean(axis=0)
         roi_mean = np.mean(x_tr[:, vox_range], axis=0)
@@ -76,10 +76,10 @@ def get_god():
 
 
 def get_styxl():
-    f1 = h5py.File("/home/tdado/images/GANs_StyleGAN_XL_normMUA.mat", "r")
+    f1 = h5py.File("/home/images/GANs_StyleGAN_XL_normMUA.mat", "r")
     x_te = np.delete(np.array(f1["test_MUA"]), np.arange(320, 384), axis=1)
     x_tr = np.delete(np.array(f1["train_MUA"]), np.arange(320, 384), axis=1)
-    w_te = np.load("/home/tdado/images/ws_te7.npy")[:, 0]
-    w_tr = np.load("/home/tdado/images/ws_tr7.npy")[:, 0]
+    w_te = np.load("/home/images/ws_te7.npy")[:, 0]
+    w_tr = np.load("/home/images/ws_tr7.npy")[:, 0]
     h = np.cumsum([0, 448, 256, 256])
     return w_te, x_te, w_tr, x_tr, h

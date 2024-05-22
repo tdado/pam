@@ -33,7 +33,7 @@ def main():
     ys = y.unsqueeze(1).repeat(1, 37, 1)
     for i in range(len(ys)):
         reconstruct(G, i, ys, "god/recon_lin")
-    np.save("/home/tdado/pam/god/y_god_lin.npy", y.cpu().detach().numpy())
+    np.save("/home/pam/god/y_god_lin.npy", y.cpu().detach().numpy())
 
 
 if __name__ == "__main__":

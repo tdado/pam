@@ -25,7 +25,7 @@ def train_linear(device, n_epochs, n_input, seed, training_loader, filename):
         loss_tr.append(l_tr / len(training_loader))
     plt.figure()
     plt.plot(loss_tr)
-    plt.savefig("/home/tdado/pam/fig/loss_%s_%i.png" % (filename, epoch))
+    plt.savefig("/home/pam/fig/loss_%s_%i.png" % (filename, epoch))
     plt.close()
     return model
 
@@ -52,7 +52,7 @@ def train_pam(device, n_epochs, seed, training_loader, h, filename):
         loss_tr.append(l_tr / len(training_loader))
     plt.figure()
     plt.plot(loss_tr)
-    plt.savefig("/home/tdado/pam/fig/loss_%s_%i.png" % (filename, epoch))
+    plt.savefig("/home/pam/fig/loss_%s_%i.png" % (filename, epoch))
     plt.close()
     return model
 
@@ -67,4 +67,4 @@ def reconstruct(G, i, y, folder):
     _img = G.synthesis(y[i, None], noise_mode="none")
     _img = (_img.permute(0, 2, 3, 1) * 127.5 + 128).clamp(0, 255).to(torch.uint8)
     _img = Image.fromarray(_img[0].cpu().numpy(), 'RGB')
-    _img.save("/home/tdado/pam/%s/%s.png" % (folder, str(i+1).zfill(4)))
+    _img.save("/home/pam/%s/%s.png" % (folder, str(i+1).zfill(4)))

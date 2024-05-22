@@ -36,11 +36,11 @@ def main():
     for i in range(len(ys)):
         reconstruct(G, i, ys, "sty/recon")
 
-    np.save("/home/tdado/pam/sty/y_sty.npy", y.cpu().detach().numpy())
-    np.save("/home/tdado/pam/sty/k_sty.npy", k.cpu().detach().numpy())
-    np.save("/home/tdado/pam/sty/q_sty.npy", q.cpu().detach().numpy())
-    np.save("/home/tdado/pam/sty/v_sty.npy", v.cpu().detach().numpy())
-    np.save("/home/tdado/pam/sty/w_sty.npy", model._w.cpu().detach().numpy())
+    np.save("/home/pam/sty/y_sty.npy", y.cpu().detach().numpy())
+    np.save("/home/pam/sty/k_sty.npy", k.cpu().detach().numpy())
+    np.save("/home/pam/sty/q_sty.npy", q.cpu().detach().numpy())
+    np.save("/home/pam/sty/v_sty.npy", v.cpu().detach().numpy())
+    np.save("/home/pam/sty/w_sty.npy", model._w.cpu().detach().numpy())
 
 
 if __name__ == "__main__":
